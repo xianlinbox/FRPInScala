@@ -9,6 +9,10 @@ import Prop._
 
 abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
 
+  property("empty") = forAll { a: Int =>
+    isEmpty(empty)
+  }
+
   property("findMin1") = forAll { a: Int =>
     val h = insert(a, empty)
     findMin(h) == a
