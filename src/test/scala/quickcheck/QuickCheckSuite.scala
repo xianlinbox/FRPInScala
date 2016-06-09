@@ -19,11 +19,9 @@ class QuickCheckSuite extends FunSuite with Checkers {
   def checkBogus(p: Prop) {
     var ok = false
     try {
-      println(p)
       check(p)
     } catch {
       case e: TestFailedException => {
-        println(e)
         ok = true
       }
     }
