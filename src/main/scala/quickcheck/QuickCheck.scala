@@ -9,7 +9,7 @@ import Prop._
 
 abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
 
-  property("empty") = forAll { a: Int =>
+  property("empty") = forAll { a:Int =>
     isEmpty(empty)
   }
 
@@ -32,6 +32,11 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
     findMin(h3) == a + 1
   }
 
+  property("deleteMin2") = forAll { a: Int =>
+    val h1 = insert(a, empty)
+    val h3 = deleteMin(h1)
+    isEmpty(h3)
+  }
 
   property("meld") = forAll { a: Int =>
     val h1 = insert(a, empty)
