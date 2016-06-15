@@ -9,7 +9,7 @@ import Prop._
 
 abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
 
-  property("empty") = forAll { a:Int =>
+  property("empty") = forAll { a: Int =>
     isEmpty(empty)
   }
 
@@ -18,18 +18,27 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
     findMin(h) == a
   }
 
-  property("findMin2") = forAll { a: Int =>
+  property("findMin2") = forAll { (a: Int, b: Int) =>
     val h1 = insert(a, empty)
-    val h2 = insert(a + 1, h1)
-    findMin(h2) == a
+    val h2 = insert(b, h1)
+
+    if (a > b ){
+      findMin(h2) == b
+    } else {
+      findMin(h2) == a
+    }
   }
 
 
-  property("deleteMin1") = forAll { a: Int =>
+  property("deleteMin1") = forAll { (a: Int, b: Int)  =>
     val h1 = insert(a, empty)
-    val h2 = insert(a + 1, h1)
+    val h2 = insert(b, h1)
     val h3 = deleteMin(h2)
-    findMin(h3) == a + 1
+    if (a > b ){
+      findMin(h3) == a
+    } else {
+      findMin(h3) == b
+    }
   }
 
   property("deleteMin2") = forAll { a: Int =>
@@ -38,13 +47,16 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
     isEmpty(h3)
   }
 
-  property("meld") = forAll { a: Int =>
+  property("meld") = forAll { (a: Int, b: Int) =>
     val h1 = insert(a, empty)
     val h2 = insert(a + 1, empty)
     val h3 = meld(h1, h2)
-    findMin(h3) == a
+    if (a > b ){
+      findMin(h3) == b
+    } else {
+      findMin(h3) == a
+    }
   }
-
 
   lazy val genHeap: Gen[H] = ???
 
