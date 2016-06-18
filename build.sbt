@@ -1,4 +1,4 @@
-submitProjectName := "quickcheck"
+submitProjectName := "calculator"
 
 scalaVersion := "2.11.5"
 
@@ -41,9 +41,9 @@ projectDetailsMap := {
                     styleScoreRatio = 0.0,
                     courseId=currentCourseId,
                     dependencies = Seq("org.scalacheck" %% "scalacheck" % "1.12.1")),
-    "simulations" -> ProjectDetails(
-                    packageName = "simulations",
-                    assignmentPartId = "pA3TAeu1",
+    "calculator" -> ProjectDetails(
+                    packageName = "calculator",
+                    assignmentPartId = "8uURtbi7",
                     maxScore = 10d,
                     styleScoreRatio = 0.0,
                     courseId=currentCourseId),
