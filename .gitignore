@@ -13,6 +13,7 @@
 .idea/
 out/**
 target/**
+web-ui/target/**
 project/target/**
 project/project/**
 submission/**
